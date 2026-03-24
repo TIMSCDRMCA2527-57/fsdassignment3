@@ -33,9 +33,9 @@
 // }
 
 
-const fs = require("fs")
-fs.writeFileSync("text.txt","Hello this is sample file.")
-console.log("File created.")
+// const fs = require("fs")
+// fs.writeFileSync("text.txt","Hello this is sample file.")
+// console.log("File created.")
 
 
 // const localmodule = require("./localmodule")
@@ -223,59 +223,159 @@ console.log("File created.")
 
 
 
-const http = require("http");
-const querystring = require("querystring");
+// const http = require("http");
+// const querystring = require("querystring");
 
-const server = http.createServer((req, res) => {
+// const server = http.createServer((req, res) => {
 
-    if (req.method === "GET") {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(`
-            <h2>Registration Form</h2>
-            <form method="POST">
-                Name: <input type="text" name="name" required><br><br>
-                Email: <input type="email" name="email" required><br><br>
-                Course: <input type="text" name="course" required><br><br>
-                <input type="submit" value="Register">
-            </form>
-        `);
-        res.end();
-    }
+//     if (req.method === "GET") {
+//         res.writeHead(200, { "Content-Type": "text/html" });
+//         res.write(`
+//             <h2>Registration Form</h2>
+//             <form method="POST">
+//                 Name: <input type="text" name="name" required><br><br>
+//                 Email: <input type="email" name="email" required><br><br>
+//                 Course: <input type="text" name="course" required><br><br>
+//                 <input type="submit" value="Register">
+//             </form>
+//         `);
+//         res.end();
+//     }
 
-    else if (req.method === "POST") {
-        let body = "";
+//     else if (req.method === "POST") {
+//         let body = "";
 
-        req.on("data", chunk => {
-            body += chunk.toString();
-        });
+//         req.on("data", chunk => {
+//             body += chunk.toString();
+//         });
 
-        req.on("end", () => {
-            const data = querystring.parse(body);
+//         req.on("end", () => {
+//             const data = querystring.parse(body);
 
-            res.writeHead(200, { "Content-Type": "text/html" });
+//             res.writeHead(200, { "Content-Type": "text/html" });
 
-            res.write(`
-                <h2>Registration Form</h2>
-                <form method="POST">
-                    Name: <input type="text" name="name" required><br><br>
-                    Email: <input type="email" name="email" required><br><br>
-                    Course: <input type="text" name="course" required><br><br>
-                    <input type="submit" value="Register">
-                </form>
+//             res.write(`
+//                 <h2>Registration Form</h2>
+//                 <form method="POST">
+//                     Name: <input type="text" name="name" required><br><br>
+//                     Email: <input type="email" name="email" required><br><br>
+//                     Course: <input type="text" name="course" required><br><br>
+//                     <input type="submit" value="Register">
+//                 </form>
 
-                <h2>Submitted Details</h2>
-                Name: ${data.name}<br>
-                Email: ${data.email}<br>
-                Course: ${data.course}
-            `);
+//                 <h2>Submitted Details</h2>
+//                 Name: ${data.name}<br>
+//                 Email: ${data.email}<br>
+//                 Course: ${data.course}
+//             `);
 
-            res.end();
-        });
-    }
+//             res.end();
+//         });
+//     }
 
+// });
+
+// server.listen(3000, () => {
+//     console.log("Server running at http://localhost:3000/");
+// });
+
+
+
+
+
+
+
+const express = require('express');
+
+const app = express();
+
+const PORT = 3001;
+
+app.get('/', (req, res) => {
+    res.send('Hello, this is a simple Express server!');
 });
 
-server.listen(3000, () => {
-    console.log("Server running at http://localhost:3000/");
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const express = require("express");
+// const path = require("path");
+
+// const app = express();
+
+// app.use(express.static(__dirname));
+
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "index.html"));
+// });
+
+// app.get("/about", (req, res) => {
+//     res.sendFile(path.join(__dirname, "about.html"));
+// });
+
+// app.get("/contact", (req, res) => {
+//     res.sendFile(path.join(__dirname, "contact.html"));
+// });
+
+// app.listen(3000, () => {
+//     console.log("Server running at http://localhost:3000/");
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const express = require("express");
+// const path = require("path");
+
+// const app = express();
+
+// app.use(express.urlencoded({ extended: true }));
+
+// app.use(express.static(__dirname));
+
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "register.html"));
+// });
+
+// app.post("/register", (req, res) => {
+//     const { name, email, password } = req.body;
+
+//     res.send(`
+//         <h1>Registration Successful</h1>
+//         <p><strong>Name:</strong> ${name}</p>
+//         <p><strong>Email:</strong> ${email}</p>
+//         <p><strong>Password:</strong> ${password}</p>
+//         <br>
+//         <a href="/">Go Back</a>
+//     `);
+// });
+
+// app.listen(3000, () => {
+//     console.log("Server running at http://localhost:3000/");
+// });
